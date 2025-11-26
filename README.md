@@ -56,3 +56,16 @@ python gps_simulator.py
 Published to topic:
 
 cc/gps
+Why This Project Matters
+
+This GPS + MQTT simulator shows you can:
+
+Build IoT real-time streaming systems
+
+Work with MQTT protocols
+
+Generate realistic telemetry data
+
+Understand fleet monitoring concepts
+
+This is highly relevant to companies working on GPS, trucks, telematics, and IoT pipelines.
