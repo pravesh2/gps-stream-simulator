@@ -78,8 +78,6 @@ IoT/MQTT pipeline development
 
 Load testing real-time systems
 
-Practice for DevNullX architectural interviews
-
 Fleet analytics and dashboards
 
 📜 License
