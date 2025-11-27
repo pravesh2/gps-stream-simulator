@@ -1,71 +1,87 @@
-GPS Stream Simulator (MQTT + Real-Time Data)
+GPS Stream Simulator
+
+A lightweight Python-based real-time GPS telemetry generator that simulates vehicle movement and publishes high-frequency location data over MQTT.
+Ideal for IoT, fleet systems, real-time pipelines, and technical interviews such as DevNullX.
 
 
 
 
 
 
-A lightweight IoT simulator that generates continuous GPS coordinates and streams them via MQTT.
+🚀 Overview
 
-Perfect for:
+This tool simulates a moving truck/vehicle and continuously streams:
 
-Real-time data ingestion testing
+Latitude
 
-Fleet + telemetry backend testing
+Longitude
 
-DevNullX backend interview preparation
+Speed
 
-IoT → Cloud → Analytics pipeline development
+Timestamp
 
-📁 Project Structure
+Device ID
+
+It is designed to closely mimic IoT hardware used in commercial fleet tracking.
+
+📂 Project Structure
 gps-stream-simulator/
-│── gps_simulator.py
-│── mqtt_client.py
-│── requirements.txt
-│── README.md
+│
+├── gps_simulator.py       # Vehicle movement simulation logic
+├── mqtt_client.py         # MQTT client to publish messages
+├── requirements.txt       # Dependencies
+└── README.md              # Documentation
 
-🧠 Architecture Diagram
-┌──────────────────────┐
-│  gps_simulator.py     │
-│ Random GPS generator  │
-└─────────┬─────────────┘
-          │ JSON payload
-┌─────────▼─────────────┐
-│   mqtt_client.py       │
-│ Publishes to MQTT      │
-└─────────┬─────────────┘
-          │
-          ▼
-  MQTT Broker (HiveMQ / Cloud MQTT)
+🛠 Installation
+1. Clone the repository
+git clone https://github.com/pravesh2/gps-stream-simulator
+cd gps-stream-simulator
 
-⚙️ Installation
-Install dependencies:
+2. Create & activate virtual environment
+python -m venv venv
+source venv/bin/activate     # Linux/Mac
+venv\Scripts\activate        # Windows
+
+3. Install dependencies
 pip install -r requirements.txt
 
-Run GPS Simulator:
+▶️ Running the Simulator
+Start GPS Streaming
 python gps_simulator.py
 
-📡 Example Output
+
+You can edit the MQTT broker details in mqtt_client.py:
+
+BROKER = "test.mosquitto.org"
+TOPIC = "gps/data"
+
+📡 Live Monitoring (MQTT Subscribe)
+
+Use Mosquitto client:
+
+mosquitto_sub -h test.mosquitto.org -t gps/data
+
+🔄 Example Output
 {
-  "lat": 28.70456,
-  "lon": 77.10204,
-  "timestamp": 1731592034.4215
+  "device_id": "truck-001",
+  "lat": 28.6139,
+  "lon": 77.2090,
+  "speed": 54.2,
+  "timestamp": "2025-11-15T12:42:23Z"
 }
 
+🧪 Use Cases
 
-Published to topic:
+Testing backend ingestion systems
 
-cc/gps
-Why This Project Matters
+IoT/MQTT pipeline development
 
-This GPS + MQTT simulator shows you can:
+Load testing real-time systems
 
-Build IoT real-time streaming systems
+Practice for DevNullX architectural interviews
 
-Work with MQTT protocols
+Fleet analytics and dashboards
 
-Generate realistic telemetry data
+📜 License
 
-Understand fleet monitoring concepts
-
-This is highly relevant to companies working on GPS, trucks, telematics, and IoT pipelines.
+MIT License
